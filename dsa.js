@@ -5,8 +5,8 @@ function isPalindrome(str){
   return str === reverseStr
 }
 
-console.log(isPalindrome("mom"))
-console.log(isPalindrome("momi"))
+// console.log(isPalindrome("mom"))
+// console.log(isPalindrome("momi"))
 
 //not reverse method
 function isPalindromeNotReverseMethod(str){
@@ -19,8 +19,8 @@ function isPalindromeNotReverseMethod(str){
 }
 
 
-console.log(isPalindromeNotReverseMethod("mom"))
-console.log(isPalindromeNotReverseMethod("momi"))
+// console.log(isPalindromeNotReverseMethod("mom"))
+// console.log(isPalindromeNotReverseMethod("momi"))
 
 
 // without reverse 
@@ -39,8 +39,8 @@ function isPalindromeNumber(num) {
     return originalNum === reverseNum;
 }
 
-console.log(isPalindromeNumber(121));  // true
-console.log(isPalindromeNumber(546));  // false
+// console.log(isPalindromeNumber(121));  // true
+// console.log(isPalindromeNumber(546));  // false
 /* important to remembar
 let digit = num % 10;
 reverseNum = reverseNum * 10 + digit;
@@ -58,14 +58,14 @@ var fib = function(n) {
     return arr[n]
 };
 
-console.log(fib(10))
+// console.log(fib(10))
 
 var fib1 = function(n) {
     if (n <= 1) return n
     return fib1(n-1) + fib1(n-2)
 }
 
-console.log(fib1(5))
+// console.log(fib1(5))
 
 //valid anagram
 
@@ -88,8 +88,8 @@ function isAnagaram (a,b){
 
 //create first obj then again create 2nd obj the compare both obj
 
-console.log(isAnagaram("anagaram","nagarama"))
-console.log(isAnagaram("car","rat"))
+// console.log(isAnagaram("anagaram","nagarama"))
+// console.log(isAnagaram("car","rat"))
 
 //two sum
 // method 1
@@ -115,3 +115,40 @@ var twosumOpti = function(nums, target) {
         }
     }
 }
+// best time to buy sell stocks
+
+function maxProfit(prices) {
+    let maxProfit = 0;
+
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = i + 1; j < prices.length; j++) {
+
+            let profitValue = prices[j] - prices[i];
+
+            if (profitValue > maxProfit) {
+                maxProfit = profitValue;
+            }
+        }
+    }
+
+    return maxProfit;
+}
+
+// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+//optimized
+function maxProfit (prices) {
+    let minValIndex = 0;
+    let maxProfitVal = 0;
+
+    for(let i = 0; i < prices.length; i++) {
+        if(prices[minValIndex] > prices[i]){
+            minValIndex = i
+        }
+        if(maxProfitVal < prices[i] - prices[minValIndex]){
+            maxProfitVal = prices[i] - prices[minValIndex]
+        }
+    }
+    return maxProfitVal
+};
+
+console.log(maxProfit([7,5,1,3,6,4]))
