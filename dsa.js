@@ -41,7 +41,11 @@ function isPalindromeNumber(num) {
 
 console.log(isPalindromeNumber(121));  // true
 console.log(isPalindromeNumber(546));  // false
-
+/* important to remembar
+let digit = num % 10;
+reverseNum = reverseNum * 10 + digit;
+num = Math.floor(num / 10);
+*/
 
 //========================================
 //fibonacci
@@ -62,3 +66,52 @@ var fib1 = function(n) {
 }
 
 console.log(fib1(5))
+
+//valid anagram
+
+function isAnagaram (a,b){
+    if(a.length !== b.length) return false;
+
+    let rslt1 = {};
+    let rslt2 = {};
+
+    for(let i=0; i < a.length; i++){
+        rslt1[a[i]] = (rslt1[a[i]] || 0) + 1
+        rslt2[b[i]] = (rslt2[b[i]] || 0) + 1
+    }
+
+    for(let key in rslt1){
+        if(rslt1[key] !== rslt2[key]) return false
+    }
+    return true
+}
+
+//create first obj then again create 2nd obj the compare both obj
+
+console.log(isAnagaram("anagaram","nagarama"))
+console.log(isAnagaram("car","rat"))
+
+//two sum
+// method 1
+var twoSum = function(nums, target) {
+    for(let a = 0; a< nums.length; a++){
+        for(let b=a+1; b<nums.length; b++){
+            if(nums[a] + nums[b] === target) return [a,b];
+        }
+    }
+    return []
+};
+
+//optimized method2
+
+var twosumOpti = function(nums, target) {
+    var obj = {};
+    for(let a = 0; a< nums.length; a++){
+        var n = nums[a];
+        if(obj[target - 1] >=0){
+            return [obj[target - n], i];
+        } else {
+            obj[n] = i
+        }
+    }
+}
