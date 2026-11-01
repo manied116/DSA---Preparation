@@ -134,7 +134,7 @@ function maxProfit(prices) {
     return maxProfit;
 }
 
-// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+// console.log(maxProfit([7, 1, 5, 3, 6, 4])); 
 //optimized
 function maxProfit (prices) {
     let minValIndex = 0;
@@ -151,4 +151,69 @@ function maxProfit (prices) {
     return maxProfitVal
 };
 
-console.log(maxProfit([7,5,1,3,6,4]))
+// console.log(maxProfit([7,5,1,3,6,4]))
+//array
+// optimized
+function secondLargest(arr){
+    let firstLargeNum = 0;
+    let secondLargeNum = 0;
+    
+    for(let i = 0; i <arr.length; i++){
+        if(firstLargeNum < arr[i]){
+            firstLargeNum = arr[i]
+        }else
+        if(firstLargeNum > arr[i] && secondLargeNum < arr[i]){
+            secondLargeNum = arr[i]
+        }
+    }
+    return secondLargeNum
+} 
+
+// console.log(secondLargest([12,35,1,10,34,1]))
+//sc-o(1) tc - (o (n))
+
+// rotate array by k
+ //ip-[1,2,3,4,5,6,7] - op - [5,6,7,1,2,3,4]
+//  use reverse function
+
+
+//remove duplicate from sorted array
+//optimized
+function removeDuplicate(arr){
+    let rsltIndex = 0
+
+    for(let i=rsltIndex+1; i<arr.length; i++){
+        if(arr[rsltIndex] !== arr[i]){
+            arr[rsltIndex+1] = arr[i]
+            rsltIndex++
+        }
+    }
+    return rsltIndex+1
+}
+
+// console.log(removeDuplicate([0,0,1,1,1,2,2,3,3,4,4]))
+
+//kadans algo
+//optimized
+/*
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+*/
+
+function maxSumArray(nums){
+    let max = nums[0]
+    let currSum = nums[0];
+    for (let i=1;i<nums.length;i++){
+        let sum1 = currSum + nums[i];
+        let sum2 = nums[i]
+
+        currSum = Math.max(sum1, sum2);
+        max = Math.max(max, currSum);
+    }
+    return max
+}
+
+console.log(maxSumArray([-2,1,-3,4,-1,2,1,-5,4]))
+// console.log(maxSumArray([5,4,-1,7,8]))
+// console.log(maxSumArray([1]))
