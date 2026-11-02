@@ -214,6 +214,34 @@ function maxSumArray(nums){
     return max
 }
 
-console.log(maxSumArray([-2,1,-3,4,-1,2,1,-5,4]))
+// console.log(maxSumArray([-2,1,-3,4,-1,2,1,-5,4]))
 // console.log(maxSumArray([5,4,-1,7,8]))
 // console.log(maxSumArray([1]))
+
+
+//recursion
+ //range of numbers
+
+ function rangeOfNumers(start,end){
+    if(end < start){
+        return [];
+    }else {
+        let result = rangeOfNumers(start,end-1)
+        result.push(end)
+        return result
+    }
+ }
+ console.log(rangeOfNumers(0,5))
+
+// reverse a string
+
+function revereString(str){
+    if(str.length === 0){
+        return ""
+    }else{
+        let reverserslt =  str[str.length-1];
+        return reverserslt + revereString(str.slice(0,str.length-1))
+    }
+}
+
+console.log(revereString("hello"))
