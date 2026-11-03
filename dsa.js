@@ -245,3 +245,60 @@ function revereString(str){
 }
 
 console.log(revereString("hello"))
+
+//stack - LIFO
+
+//the sky is blue
+
+function reverseWords (s) {
+    let newStr = s.split(" ")
+    let stack = []
+
+    for( let key of newStr){
+        stack.push(key)
+    }
+
+    let finalStr = ""
+    while(stack.length){
+        let current = stack.pop();
+
+        if(current)[
+            finalStr += " " + current
+        ]
+    }
+    return finalStr.trim()
+};
+
+console.log(reverseWords("the sky is blue"))
+
+// bracket related
+function isValidBrackets(str) {
+    const stack = [];
+    const bracketMap = {
+        '}': '{',
+        ']': '[',
+        ')': '(',
+    };
+
+    for (let char of str) {
+        // console.log(char)
+        if (['{', '[', '('].includes(char)) {
+            // If it's an opening bracket, push it onto the stack
+            stack.push(char);
+        } else if (['}', ']', ')'].includes(char)) {
+            // If it's a closing bracket, check the top of the stack
+            // console.log(stack)
+            // console.log(bracketMap[char])
+            if (stack.pop() !== bracketMap[char]) {
+                return false; // Invalid if it doesn't match
+            }
+        }
+        // console.log(stack)
+    }
+    // If the stack is empty, all brackets were matched
+    return stack.length === 0;
+}
+
+// Example Usage
+const input = "([])";
+console.log(isValidBrackets(input))
